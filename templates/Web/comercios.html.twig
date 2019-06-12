@@ -1,5 +1,18 @@
 {% extends '/Web/layout.html.twig' %}
 
+{% block meta_description %}Sección comercios adheridos Black Frdiday 2019{% endblock %}
+{% block title %}Comercios adheridos - {% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .card-img-custom {
+            width: 100%;
+            height: 13vw;
+            object-fit: cover;
+        }
+    </style>
+{% endblock stylesheets %}
+
 {% block content %}
 
     <section class="page">
@@ -15,7 +28,9 @@
                                 <div class="card mb-3">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            {% if comercio.archivoLogo %}
+                                            {% if comercio.nombreLogo %}
+                                                <img src="{{ asset('uploads/logos_comercios/' ~ comercio.nombreLogo) }}"
+                                                     class="card-img-custom" alt="logo-comercio">
                                             {% else %}
                                                 <img src="{{ asset('build/images/default-image-card-comercio.png') }}"
                                                      class="card-img" alt="default-image-comercio.png">
@@ -27,7 +42,14 @@
                                                 <h5 class="card-title">{{ comercio }}</h5>
                                                 <p class="card-text">{{ comercio.observacion }}</p>
                                                 <p class="card-text">
-                                                    <small class="text-muted">{{ comercio.direccion }}</small>
+                                                    <small class="text-muted">
+                                                        <strong>Dirección:</strong>
+                                                        {% if comercio.linkGoogleMaps %}
+                                                        <a href="{{ comercio.linkGoogleMaps }}" target="_blank">{{ comercio.direccion }}</a>
+                                                        {% else %}
+                                                            {{ comercio.direccion }}
+                                                        {% endif %}
+                                                    </small>
                                                 </p>
                                             </div>
                                         </div>

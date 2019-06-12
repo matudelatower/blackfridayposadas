@@ -53,23 +53,23 @@
 
     </style>
 {% endblock stylesheets %}
-{% if error %}
-    <div class="alert alert-danger alert-dismissable">
-        <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-        <h4>
-            <i class="icon fa fa-ban"></i>
-            Error!
-        </h4>
-        {{ error.messageKey|trans(error.messageData, 'security') }}
-    </div>
-{% endif %}
 
 <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
     {% endif %}
-    <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <img class="mb-4" src="{{ asset('build/images/logo.png') }}" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Inicie Sesión</h1>
+    {% if error %}
+        <div class="alert alert-danger alert-dismissable">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <h4>
+                <i class="icon fa fa-ban"></i>
+                Error!
+            </h4>
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
     <label for="inputUser" class="sr-only">{{ 'security.login.username'|trans }}</label>
     <input type="text" id="inputUser" name="_username" class="form-control" placeholder="{{ 'security.login.username'|trans }}"
            required="" autofocus="">
@@ -83,5 +83,5 @@
     {#    </div>#}
     <input class="btn btn-lg btn-primary btn-block" type="submit" name="_submit"
            value="{{ 'security.login.submit'|trans }}">
-    <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+    <p class="mt-5 mb-3 text-muted">© 2019</p>
 </form>

@@ -1,0 +1,9 @@
+easy_admin:
+    entities:
+        TipEmpresa:
+            class: App\Entity\TipEmpresa
+            form:
+                fields:
+                  - { property: 'titulo' }
+                  - { property: 'descripcion' }
+                  - { property: 'activo' }

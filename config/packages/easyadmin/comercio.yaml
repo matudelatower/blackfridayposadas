@@ -2,13 +2,16 @@ easy_admin:
     entities:
         Comercio:
             class: App\Entity\Comercio
+            list:
+                fields: ['nombre', 'direccion', { property: 'nombreLogo', type: 'image', base_path: '%app.path.logos_comercios%' }, 'activo']
             form:
                 fields:
                   - { property: 'nombre' }
                   - { property: 'direccion' }
-                  - { property: 'latitud' }
-                  - { property: 'longitud' }
-                  - { property: 'archivoLogo', type: 'vich_image'}
+#                  - { property: 'latitud' }
+#                  - { property: 'longitud' }
+                  - { property: 'linkGoogleMaps' }
+                  - { property: 'archivoLogo', type: 'vich_image', type_options: { required: 'false', mapped: false } }
                   - { property: 'observacion' }
                   - { property: 'rubro' }
-                  - { property: 'activo' }
+                  - { property: 'activo', type_options: { required: false } }

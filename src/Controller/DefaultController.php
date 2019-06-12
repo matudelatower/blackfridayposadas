@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comercio;
 use App\Entity\Rubro;
+use App\Entity\TipEmpresa;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,7 +35,9 @@ class DefaultController extends AbstractController {
 	 */
 	public function rubros() {
 
-		$rubros = $this->getDoctrine()->getRepository( Rubro::class )->findAll();
+		$rubros = $this->getDoctrine()->getRepository( Rubro::class )->findBy(
+			[ 'activo' => true ]
+		);
 
 
 		return $this->render( 'Web/rubros.html.twig',
@@ -48,12 +51,21 @@ class DefaultController extends AbstractController {
 	 */
 	public function comercios( Request $request ) {
 
-		$criteria = [];
+		$criteria = [
+			'activo' => true
+		];
 
 
 		if ( $request->get( 'rubroId' ) ) {
-			$rubro    = $this->getDoctrine()->getRepository( Rubro::class )->findOneById( $request->get( 'rubroId' ) );
-			$criteria = [ 'rubro' => $rubro ];
+			$rubro = $this->getDoctrine()->getRepository( Rubro::class )->findOneBy(
+				[
+					'id'     => $request->get( 'rubroId' ),
+					'activo' => true
+				]
+			);
+			if ( $rubro ) {
+				$criteria['rubro'] = $rubro;
+			}
 		}
 
 		$comercios = $this->getDoctrine()->getRepository( Comercio::class )->findBy(
@@ -63,6 +75,26 @@ class DefaultController extends AbstractController {
 		return $this->render( 'Web/comercios.html.twig',
 			[
 				'comercios' => $comercios
+			] );
+	}
+
+	/**
+	 * @Route("/para_comercios", name="para_comercios")
+	 */
+	public function paraComercios( Request $request ) {
+
+		$criteria = [
+			'activo' => true
+		];
+
+
+		$tips = $this->getDoctrine()->getRepository( TipEmpresa::class )->findBy(
+			$criteria
+		);
+
+		return $this->render( 'Web/para_comercios.html.twig',
+			[
+				'tips' => $tips
 			] );
 	}
 }

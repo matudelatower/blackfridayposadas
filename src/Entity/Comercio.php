@@ -56,104 +56,117 @@ class Comercio extends BaseClass {
 	 */
 	private $archivoLogo;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $nombreLogo;
+	/**
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	private $nombreLogo;
+
+	/**
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	private $linkGoogleMaps;
 
 	public function setArchivoLogo( File $file = null ) {
-         		$this->archivoLogo = $file;
-         
-         		// VERY IMPORTANT:
-         		// It is required that at least one field changes if you are using Doctrine,
-         		// otherwise the event listeners won't be called and the file is lost
-         		if ( $file ) {
-         			// if 'updatedAt' is not defined in your entity, use another property
-         			$this->fechaActualizacion = new \DateTime( 'now' );
-         		}
-         	}
+		$this->archivoLogo = $file;
+
+		// VERY IMPORTANT:
+		// It is required that at least one field changes if you are using Doctrine,
+		// otherwise the event listeners won't be called and the file is lost
+		if ( $file ) {
+			// if 'updatedAt' is not defined in your entity, use another property
+			$this->fechaActualizacion = new \DateTime( 'now' );
+		}
+	}
 
 	public function getArchivoLogo() {
-         		return $this->archivoLogo;
-         	}
+		return $this->archivoLogo;
+	}
 
 	public function __toString() {
-         		return $this->nombre;
-         	}
+		return $this->nombre;
+	}
 
 	public function getId(): ?int {
-         		return $this->id;
-         	}
+		return $this->id;
+	}
 
 	public function getNombre(): ?string {
-         		return $this->nombre;
-         	}
+		return $this->nombre;
+	}
 
 	public function setNombre( string $nombre ): self {
-         		$this->nombre = $nombre;
-         
-         		return $this;
-         	}
+		$this->nombre = $nombre;
+
+		return $this;
+	}
 
 	public function getDireccion(): ?string {
-         		return $this->direccion;
-         	}
+		return $this->direccion;
+	}
 
 	public function setDireccion( ?string $direccion ): self {
-         		$this->direccion = $direccion;
-         
-         		return $this;
-         	}
+		$this->direccion = $direccion;
+
+		return $this;
+	}
 
 	public function getLatitud(): ?string {
-         		return $this->latitud;
-         	}
+		return $this->latitud;
+	}
 
 	public function setLatitud( ?string $latitud ): self {
-         		$this->latitud = $latitud;
-         
-         		return $this;
-         	}
+		$this->latitud = $latitud;
+
+		return $this;
+	}
 
 	public function getLongitud(): ?string {
-         		return $this->longitud;
-         	}
+		return $this->longitud;
+	}
 
 	public function setLongitud( ?string $longitud ): self {
-         		$this->longitud = $longitud;
-         
-         		return $this;
-         	}
+		$this->longitud = $longitud;
+
+		return $this;
+	}
 
 	public function getObservacion(): ?string {
-         		return $this->observacion;
-         	}
+		return $this->observacion;
+	}
 
 	public function setObservacion( ?string $observacion ): self {
-         		$this->observacion = $observacion;
-         
-         		return $this;
-         	}
+		$this->observacion = $observacion;
+
+		return $this;
+	}
 
 	public function getRubro(): ?Rubro {
-         		return $this->rubro;
-         	}
+		return $this->rubro;
+	}
 
 	public function setRubro( ?Rubro $rubro ): self {
-         		$this->rubro = $rubro;
-         
-         		return $this;
-         	}
+		$this->rubro = $rubro;
 
-    public function getNombreLogo(): ?string
-    {
-        return $this->nombreLogo;
-    }
+		return $this;
+	}
 
-    public function setNombreLogo(?string $nombreLogo): self
-    {
-        $this->nombreLogo = $nombreLogo;
+	public function getNombreLogo(): ?string {
+		return $this->nombreLogo;
+	}
 
-        return $this;
-    }
+	public function setNombreLogo( ?string $nombreLogo ): self {
+		$this->nombreLogo = $nombreLogo;
+
+		return $this;
+	}
+
+	public function getLinkGoogleMaps(): ?string {
+		return $this->linkGoogleMaps;
+	}
+
+	public function setLinkGoogleMaps( ?string $linkGoogleMaps ): self {
+		$this->linkGoogleMaps = $linkGoogleMaps;
+
+		return $this;
+	}
 }
