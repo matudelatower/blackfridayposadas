@@ -13,8 +13,9 @@ easy_admin:
     brand_color: '#D41B20'
     #        form_theme: ['horizontal']
     menu:
-      - { label: 'Rubros', entity: Rama }
-      - { label: 'Comercios', entity: Rama }
-      - { label: 'Usuarios', entity: Usuario }
+      - { label: 'Ver web', route: 'web', icon: "eye" }
+      - { label: 'Rubros', entity: Rubro }
+      - { label: 'Comercios', entity: Comercio }
+      - { label: 'Usuarios', entity: Usuario, icon: "user" }
 #    assets:
 #      favicon: 'bundles/app/img/favicon.png'

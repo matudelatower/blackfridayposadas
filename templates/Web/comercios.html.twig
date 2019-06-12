@@ -1,0 +1,46 @@
+{% extends '/Web/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="page">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-12 p-5">
+                        <h2 class="display-4">Comercios</h2>
+                        <div class="card-columns">
+                            {% for comercio in comercios %}
+                                <div class="card mb-3">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            {% if comercio.archivoLogo %}
+                                            {% else %}
+                                                <img src="{{ asset('build/images/default-image-card-comercio.png') }}"
+                                                     class="card-img" alt="default-image-comercio.png">
+                                            {% endif %}
+
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ comercio }}</h5>
+                                                <p class="card-text">{{ comercio.observacion }}</p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">{{ comercio.direccion }}</small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

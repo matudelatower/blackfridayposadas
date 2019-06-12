@@ -1,3 +1,7 @@
+#custom
+/public/uploads/logos_comercios/*
+!/public/uploads/logos_comercios/.gitkeep
+
 # -- Editores -----------------------------------------
 # vim
 .*.sw[a-z]

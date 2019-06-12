@@ -8,6 +8,7 @@ easy_admin:
                   - { property: 'direccion' }
                   - { property: 'latitud' }
                   - { property: 'longitud' }
+                  - { property: 'archivoLogo', type: 'vich_image'}
                   - { property: 'observacion' }
                   - { property: 'rubro' }
                   - { property: 'activo' }

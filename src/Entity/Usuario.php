@@ -17,6 +17,9 @@ class Usuario extends BaseUser {
 	 */
 	protected $id;
 
+	private $superAdmin;
+	private $group;
+
 
 	public function __construct() {
 		parent::__construct();

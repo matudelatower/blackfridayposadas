@@ -3,7 +3,6 @@ easy_admin:
         Usuario:
             class: App\Entity\Usuario
             list:
-                dql_filter: "entity.roles LIKE '%%ROLE_DIGESTO%%' or entity.roles LIKE '%%ROLE_DIGESTO_ADMIN%%'"
                 fields:
                   - { property: 'username' }
                   - { property: 'email', type: 'email' }
@@ -21,8 +20,6 @@ easy_admin:
                   - { property: 'roles', type: 'choice', type_options: { multiple: true, expanded: false, choices:
                     { 'ROLE_USER': 'ROLE_USER',
                       'ROLE_ADMIN': 'ROLE_ADMIN',
-                      'ROLE_DIGESTO': 'ROLE_DIGESTO',
-                      'ROLE_DIGESTO_ADMIN': 'ROLE_DIGESTO_ADMIN'
                     }
                     }
                     }

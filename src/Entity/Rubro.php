@@ -28,6 +28,10 @@ class Rubro extends BaseClass
      */
     private $comercios;
 
+	public function __toString() {
+		return $this->nombre;
+	}
+
     public function __construct()
     {
         $this->comercios = new ArrayCollection();
