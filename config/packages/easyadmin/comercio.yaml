@@ -1,0 +1,13 @@
+easy_admin:
+    entities:
+        Comercio:
+            class: App\Entity\Comercio
+            form:
+                fields:
+                  - { property: 'nombre' }
+                  - { property: 'direccion' }
+                  - { property: 'latitud' }
+                  - { property: 'longitud' }
+                  - { property: 'observacion' }
+                  - { property: 'rubro' }
+                  - { property: 'activo' }
