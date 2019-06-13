@@ -8,10 +8,8 @@ easy_admin:
                 fields:
                   - { property: 'nombre' }
                   - { property: 'direccion' }
-#                  - { property: 'latitud' }
-#                  - { property: 'longitud' }
                   - { property: 'linkGoogleMaps' }
-                  - { property: 'archivoLogo', type: 'vich_image', type_options: { required: 'false', mapped: false } }
+                  - { property: 'archivoLogo', type: 'vich_file', type_options: { required: false } }
                   - { property: 'observacion' }
                   - { property: 'rubro' }
                   - { property: 'activo', type_options: { required: false } }
