@@ -1,33 +1,41 @@
 {% extends '/Web/layout.html.twig' %}
 
 {% block stylesheets %}
-{#    <style>#}
-{#        header.masthead{#}
-{#            background: url({{ absolute_url(asset('build/images/blackfriday2019.jpg')) }});#}
-{#            background-position: center;#}
-{#            background-size: contain;#}
-{#        }#}
-{#    </style>#}
+    <style>
+        .masthead-content img{
+            width: 35rem;
+            padding-top: 3rem;
+        }
+        header.masthead{
+            padding-top: unset;
+            padding-bottom: 3rem;
+        }
+    </style>
 {% endblock stylesheets %}
 
 {% block content %}
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container">
-                <h1 class="masthead-heading mb-0">
-                    {% if web_texto and web_texto.tituloHeader %}
-                        {{ web_texto.tituloHeader }}
-                    {% else %}
-                        Black Friday Posadas
-                    {% endif %}
-                </h1>
-                <h2 class="masthead-subheading mb-0">
-                    {% if web_texto and web_texto.subTituloHeader %}
-                        {{ web_texto.subTituloHeader }}
-                    {% else %}
-                        Del 1 al 4 de Agosto
-                    {% endif %}
-                </h2>
+{#                <h1 class="masthead-heading mb-0">#}
+{#                    {% if web_texto and web_texto.tituloHeader %}#}
+{#                        {{ web_texto.tituloHeader }}#}
+{#                    {% else %}#}
+{#                        Black Friday Posadas#}
+{#                    {% endif %}#}
+{#                </h1>#}
+{#                <h2 class="masthead-subheading mb-0">#}
+{#                    {% if web_texto and web_texto.subTituloHeader %}#}
+{#                        {{ web_texto.subTituloHeader }}#}
+{#                    {% else %}#}
+{#                        Del 1 al 4 de Agosto#}
+{#                    {% endif %}#}
+{#                </h2>#}
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="img-fluid" src="{{ asset('build/images/blackfriday2019.jpg') }}">
+                    </div>
+                </div>
                 <a href="{{ path('rubros') }}" class="btn btn-primary btn-xl rounded-pill mt-5">Consumidores</a>
                 <a href="{{ path('para_comercios') }}" class="btn btn-secondary btn-xl rounded-pill mt-5">Comercios</a>
             </div>
