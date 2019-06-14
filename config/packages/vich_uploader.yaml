@@ -6,3 +6,7 @@ vich_uploader:
             uri_prefix: '%app.path.logos_comercios%'
             upload_destination: '%kernel.project_dir%/public%app.path.logos_comercios%'
             namer: Vich\UploaderBundle\Naming\OrignameNamer
+        imagenes_galerias:
+            uri_prefix: '%app.path.imagenes_galerias%'
+            upload_destination: '%kernel.project_dir%/public%app.path.imagenes_galerias%'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer

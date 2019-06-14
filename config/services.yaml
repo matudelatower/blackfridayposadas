@@ -6,6 +6,7 @@
 parameters:
     locale: 'es'
     app.path.logos_comercios: /uploads/logos_comercios
+    app.path.imagenes_galerias: /uploads/imagenes_galerias
 
 services:
     # default configuration for services in *this* file

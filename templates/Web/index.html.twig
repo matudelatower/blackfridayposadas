@@ -1,13 +1,35 @@
 {% extends '/Web/layout.html.twig' %}
 
+{% block stylesheets %}
+{#    <style>#}
+{#        header.masthead{#}
+{#            background: url({{ absolute_url(asset('build/images/blackfriday2019.jpg')) }});#}
+{#            background-position: center;#}
+{#            background-size: contain;#}
+{#        }#}
+{#    </style>#}
+{% endblock stylesheets %}
+
 {% block content %}
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container">
-                <h1 class="masthead-heading mb-0">Black Friday Posadas</h1>
-                <h2 class="masthead-subheading mb-0">Del 1 al 4 de Agosto</h2>
+                <h1 class="masthead-heading mb-0">
+                    {% if web_texto and web_texto.tituloHeader %}
+                        {{ web_texto.tituloHeader }}
+                    {% else %}
+                        Black Friday Posadas
+                    {% endif %}
+                </h1>
+                <h2 class="masthead-subheading mb-0">
+                    {% if web_texto and web_texto.subTituloHeader %}
+                        {{ web_texto.subTituloHeader }}
+                    {% else %}
+                        Del 1 al 4 de Agosto
+                    {% endif %}
+                </h2>
                 <a href="{{ path('rubros') }}" class="btn btn-primary btn-xl rounded-pill mt-5">Consumidores</a>
-                <a href="{{ path('para_comercios') }}" class="btn btn-secondary btn-xl rounded-pill mt-5">Para empresas</a>
+                <a href="{{ path('para_comercios') }}" class="btn btn-secondary btn-xl rounded-pill mt-5">Comercios</a>
             </div>
         </div>
         <div class="bg-circle-1 bg-circle"></div>
@@ -15,6 +37,50 @@
         <div class="bg-circle-3 bg-circle"></div>
         <div class="bg-circle-4 bg-circle"></div>
     </header>
+    {% for galeria in galerias %}
+        <section>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="offset-md-3 col-md-6 p-5">
+                        <h3>{{ galeria.titulo }}</h3>
+                        <div id="carouselExampleIndicators{{ galeria.id }}" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                {% for imagen in galeria.webGaleriaImagens %}
+                                    <li data-target="#carouselExampleIndicators{{ galeria.id }}"
+                                        data-slide-to="{{ imagen.id }}"
+                                        {% if loop.first %}class="active"{% endif %}></li>
+                                {% endfor %}
+                            </ol>
+
+                            <div class="carousel-inner">
+                                {% for imagen in galeria.webGaleriaImagens %}
+                                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                        <img class="d-block w-100"
+                                             src="{{ asset('uploads/imagenes_galerias/' ~ imagen.nombreImagen) }}"
+                                             alt="{{ imagen.titulo }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators{{ galeria.id }}"
+                               role="button"
+                               data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators{{ galeria.id }}"
+                               role="button"
+                               data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
     {#    <section>#}
     {#        <div class="container">#}
     {#            <div class="row align-items-center">#}

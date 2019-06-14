@@ -14,6 +14,8 @@ easy_admin:
     #        form_theme: ['horizontal']
     menu:
       - { label: 'Ver web', route: 'web', icon: "eye" }
+      - { label: 'Texto de la Web', entity: WebTexto, icon: "globe" }
+      - { label: 'Galerías', entity: WebGaleria }
       - { label: 'Rubros', entity: Rubro }
       - { label: 'Comercios', entity: Comercio }
       - { label: 'Tips para comercios', entity: TipEmpresa }

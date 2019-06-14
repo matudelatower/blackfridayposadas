@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\WebTexto;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController;
 use FOS\UserBundle\Model\UserManagerInterface;
 
@@ -11,8 +12,7 @@ class AdminController extends EasyAdminController {
 
 	private $userManager;
 
-	public function __construct(UserManagerInterface $userManager)
-	{
+	public function __construct( UserManagerInterface $userManager ) {
 		$this->userManager = $userManager;
 	}
 
@@ -40,5 +40,18 @@ class AdminController extends EasyAdminController {
 
 	public function preUpdateUsuarioEntity( $user ) {
 		$this->userManager->updateUser( $user, false );
+	}
+
+	public function listWebTextoAction() {
+		$webTexto = $this->getDoctrine()->getRepository( WebTexto::class )->findAll();
+
+		if ( ! $webTexto ) {
+			return $this->redirectToRoute( 'easyadmin',
+				[ 'entity' => 'WebTexto', 'action' => 'new' ] );
+		} else {
+			return $this->redirectToRoute( 'easyadmin',
+				[ 'entity' => 'WebTexto', 'action' => 'edit', 'id' => $webTexto[0]->getId() ] );
+		}
+
 	}
 }

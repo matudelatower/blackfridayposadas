@@ -1,0 +1,9 @@
+easy_admin:
+    entities:
+        WebGaleria:
+            class: App\Entity\WebGaleria
+            form:
+                fields:
+                  - { property: 'titulo' }
+                  - { property: 'webGaleriaImagens', type: 'collection', type_options: { by_reference: false, entry_type: App\Form\WebGaleriaImagenType} }
+                  - { property: 'activo' }

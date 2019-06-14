@@ -1,6 +1,8 @@
 #custom
 /public/uploads/logos_comercios/*
 !/public/uploads/logos_comercios/.gitkeep
+/public/uploads/imagenes_galerias/*
+!/public/uploads/imagenes_galerias/.gitkeep
 
 # -- Editores -----------------------------------------
 # vim

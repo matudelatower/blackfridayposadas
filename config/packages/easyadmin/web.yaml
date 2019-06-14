@@ -1,0 +1,12 @@
+easy_admin:
+    entities:
+        WebTexto:
+            disabled_actions: ['delete']
+            class: App\Entity\WebTexto
+            form:
+                fields:
+                  - { property: 'tituloHeader' }
+                  - { property: 'subTituloHeader' }
+                  - { property: 'linkFormularioInscripcionComercios' }
+                  - { property: 'mostrarTips' }
+                  - { property: 'textoParaComercios', type: 'fos_ckeditor' }

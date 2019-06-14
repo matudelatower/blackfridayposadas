@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Comercio;
 use App\Entity\Rubro;
 use App\Entity\TipEmpresa;
+use App\Entity\WebGaleria;
+use App\Entity\WebTexto;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,8 +16,24 @@ class DefaultController extends AbstractController {
 	 * @Route("/", name="web")
 	 */
 	public function index() {
+		$criteria = [
+			'activo' => true
+		];
+		$webTexto = $this->getDoctrine()->getRepository( WebTexto::class )->findAll();
+		$galerias = $this->getDoctrine()->getRepository( WebGaleria::class )->findBy(
+			$criteria
+		);
+
+		if ( $webTexto ) {
+			$webTexto = $webTexto[0];
+		} else {
+			$webTexto = null;
+		}
+
 		return $this->render( 'Web/index.html.twig',
 			[
+				'web_texto' => $webTexto,
+				'galerias'  => $galerias,
 
 			] );
 	}
@@ -87,6 +105,14 @@ class DefaultController extends AbstractController {
 			'activo' => true
 		];
 
+		$webTexto = $this->getDoctrine()->getRepository( WebTexto::class )->findAll();
+
+		if ( $webTexto ) {
+			$webTexto = $webTexto[0];
+		} else {
+			$webTexto = null;
+		}
+
 
 		$tips = $this->getDoctrine()->getRepository( TipEmpresa::class )->findBy(
 			$criteria
@@ -94,7 +120,8 @@ class DefaultController extends AbstractController {
 
 		return $this->render( 'Web/para_comercios.html.twig',
 			[
-				'tips' => $tips
+				'web_texto' => $webTexto,
+				'tips'      => $tips
 			] );
 	}
 }
