@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Novedad:
+            class: App\Entity\Novedad
+            form:
+                form_options: { validation_groups: [false] }
+                fields:
+                  - { property: 'titulo' }
+                  - { property: 'cuerpo', type: 'fos_ckeditor' }
+                  - { property: 'archivoImagenDestacada', type: 'vich_file', type_options: { required: false } }

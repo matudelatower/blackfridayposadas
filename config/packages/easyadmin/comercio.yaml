@@ -11,6 +11,6 @@ easy_admin:
                   - { property: 'direccion' }
                   - { property: 'linkGoogleMaps' }
                   - { property: 'archivoLogo', type: 'vich_file', type_options: { required: false } }
-                  - { property: 'observacion' }
+                  - { property: 'observacion', type: 'fos_ckeditor' }
                   - { property: 'rubro' }
                   - { property: 'activo', type_options: { required: false } }

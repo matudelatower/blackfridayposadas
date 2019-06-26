@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -9,9 +9,36 @@
           content="{% block meta_description %}Black Friday Posadas - 2019{% endblock meta_description %}">
     <meta name="author" content="Matias Solis de la Torre, CCIP">
 
-    <meta name="theme-color" content="#D41B20">
-    <meta name="msapplication-navbutton-color" content="#D41B20">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#D41B20">
+    <meta name="theme-color" content="#ED3237">
+    <meta name="msapplication-navbutton-color" content="#ED3237">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ED3237">
+
+    {% block meta_social %}
+        {% set title = 'Black Friday Posadas - 2019' %}
+        {% set description = 'Black Friday Posadas - 2019' %}
+        {% set url = app.request.uri %}
+        {% set image = absolute_url(asset('build/images/blackfriday2019.jpg')) %}
+
+        {# facebook #}
+        <meta property="og:url"
+              content="{{ url }}"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="{{ title }}"/>
+        <meta property="og:description" content="{{ description }}"/>
+        <meta property="og:image" content="{{ image }}"/>
+
+        {# twitter #}
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="@blackfridayposadas"/>
+        <meta name="twitter:creator" content="@blackfridayposadas"/>
+        <meta property="og:url" content="{{ url }}"/>
+        <meta property="og:title" content="{{ title }}"/>
+        <meta property="og:description"
+              content="{{ description }}"/>
+        <meta property="og:image"
+              content="{{ image }}"/>
+
+    {% endblock meta_social %}
 
     <title>{% block title %}{% endblock title %}Black Friday Posadas 2019</title>
 
@@ -35,20 +62,31 @@
         .logo-menu {
             width: 10rem;
         }
+
+        .social {
+            margin-left: 1rem;
+        }
+        #prefooter{
+            /*border-top: 1px solid #373435;*/
+            border-top: 1px solid rgba(0,0,0,.125);
+            background-color: #FEFEFE;
+        }
     </style>
 
     {% block stylesheets %}
     {% endblock stylesheets %}
+    <script src="https://kit.fontawesome.com/b4616f2534.js"></script>
 </head>
 
 <body>
 
 <!-- Navigation -->
-{#<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">#}
-<nav class="navbar navbar-expand-lg fixed-top bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    {#<nav class="navbar navbar-expand-lg fixed-top bg-light">#}
     <div class="container">
         <a class="navbar-brand" href="{{ path('web') }}">
-            <img class="img-fluid logo-menu" src="{{ asset('build/images/ccim-color.png') }}" alt="logo">
+            <i class="fas fa-home"></i>
+            {#            <img class="img-fluid logo-menu" src="{{ asset('build/images/ccim-color.png') }}" alt="logo">#}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,11 +103,21 @@
                     <a class="nav-link" href="{{ path('para_comercios') }}">Comercios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('rubros') }}">Rubros</a>
+                    <a class="nav-link" href="{{ path('comercios') }}">Consumidores</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#novedades">Novedades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('comercios') }}">Comercios adheridos</a>
+                    <a class="nav-link" href="#galerias">Galería</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contacto') }}">Contacto</a>
+                </li>
+                {{ render(controller(
+                    'App\\Controller\\DefaultController::social'
+                )) }}
             </ul>
         </div>
     </div>
@@ -79,23 +127,34 @@
 {% block content %}
 {% endblock content %}
 
-<!-- Footer -->
-<footer class="py-5 bg-light">
+
+<section id="prefooter" class="py-5">
     <div class="container">
         <div class="row text-center">
             <div class="col-md-4 align-self-center">
                 {#                <p class="m-0 text-center text-white small">Copyright &copy; Black Friday Posadas 2019</p>#}
-                <img class="img-fluid" src="{{ asset('build/images/ccim-color.png') }}">
+                <a href="www.cciposadas.com.ar" target="_blank">
+                    <img class="img-fluid" src="{{ asset('build/images/ccim-color.png') }}">
+                </a>
             </div>
             <div class="col-md-4 align-self-center">
-                <img class="img-fluid" src="{{ asset('build/images/misiones-color.png') }}">
+                <a href="http://www.misiones.gov.ar/" target="_blank">
+                    <img class="img-fluid" width="60%" src="{{ asset('build/images/misiones-color.png') }}">
+                </a>
             </div>
             <div class="col-md-4 align-self-center">
-                <img class="img-fluid w-50" src="{{ asset('build/images/logo-posadas.png') }}">
+                <a href="http://posadas.gob.ar/" target="_blank">
+                    <img class="img-fluid" width="35%" src="{{ asset('build/images/logo-posadas.png') }}">
+                </a>
             </div>
         </div>
     </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-light">
     <!-- /.container -->
+    {{ render(controller('App\\Controller\\DefaultController::footerInfo')) }}
 </footer>
 
 <!-- Bootstrap core JavaScript -->

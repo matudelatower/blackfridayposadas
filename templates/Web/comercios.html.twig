@@ -3,6 +3,33 @@
 {% block meta_description %}Sección comercios adheridos Black Frdiday 2019{% endblock %}
 {% block title %}Comercios adheridos - {% endblock %}
 
+    {% block meta_social %}
+        {% set title = 'Comercios - Black Friday Posadas - 2019' %}
+        {% set description = 'Sección comercios adheridos Black Frdiday 2019' %}
+        {% set url = app.request.uri %}
+        {% set image = absolute_url(asset('build/images/blackfriday2019.jpg')) %}
+
+        {# facebook #}
+        <meta property="og:url"
+              content="{{ url }}"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="{{ title }}"/>
+        <meta property="og:description" content="{{ description }}"/>
+        <meta property="og:image" content="{{ image }}"/>
+
+        {# twitter #}
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="@blackfridayposadas"/>
+        <meta name="twitter:creator" content="@blackfridayposadas"/>
+        <meta property="og:url" content="{{ url }}"/>
+        <meta property="og:title" content="{{ title }}"/>
+        <meta property="og:description"
+              content="{{ description }}"/>
+        <meta property="og:image"
+              content="{{ image }}"/>
+
+    {% endblock meta_social %}
+
 {% block stylesheets %}
     <style>
         .card-img-custom {
@@ -19,49 +46,66 @@
         <div class="container">
             <div class="row align-items-center">
 
-                <div class="row align-items-center">
+                <div class="col-md-12 p-5">
+                    <h2 class="display-4">Comercios</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_start(form) }}
+                            <div class="input-group mb-3">
+                                {{ form_widget(form.s) }}
+                                <div class="input-group-append">
+                                    {{ form_widget(form.btnBuscar) }}
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                    <div class="card-columns">
+                        {% for comercio in comercios %}
+                            <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        {% if comercio.nombreLogo %}
+                                            <img src="{{ asset('uploads/logos_comercios/' ~ comercio.nombreLogo) }}"
+                                                 class="card-img-custom" alt="logo-comercio">
+                                        {% else %}
+                                            <img src="{{ asset('build/images/default-image-card-comercio.png') }}"
+                                                 class="card-img" alt="default-image-comercio.png">
+                                        {% endif %}
 
-                    <div class="col-md-12 p-5">
-                        <h2 class="display-4">Comercios</h2>
-                        <div class="card-columns">
-                            {% for comercio in comercios %}
-                                <div class="card mb-3">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            {% if comercio.nombreLogo %}
-                                                <img src="{{ asset('uploads/logos_comercios/' ~ comercio.nombreLogo) }}"
-                                                     class="card-img-custom" alt="logo-comercio">
-                                            {% else %}
-                                                <img src="{{ asset('build/images/default-image-card-comercio.png') }}"
-                                                     class="card-img" alt="default-image-comercio.png">
-                                            {% endif %}
-
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ comercio }}</h5>
-                                                <p class="card-text">{{ comercio.observacion }}</p>
-                                                <p class="card-text">
-                                                    <small class="text-muted">
-                                                        <strong>Dirección:</strong>
-                                                        {% if comercio.linkGoogleMaps %}
-                                                        <a href="{{ comercio.linkGoogleMaps }}" target="_blank">{{ comercio.direccion }}</a>
-                                                        {% else %}
-                                                            {{ comercio.direccion }}
-                                                        {% endif %}
-                                                    </small>
-                                                </p>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ comercio }}</h5>
+                                            <p class="card-text">{{ comercio.observacion | raw }}</p>
+                                            <p class="card-text">
+                                                <small class="text-muted">
+                                                    <strong>Dirección:</strong>
+                                                    {% if comercio.linkGoogleMaps %}
+                                                        <a href="{{ comercio.linkGoogleMaps }}"
+                                                           target="_blank">{{ comercio.direccion }}</a>
+                                                    {% else %}
+                                                        {{ comercio.direccion }}
+                                                    {% endif %}
+                                                </small>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
+
                 </div>
 
+                <div class="col-md-12 pl-5 pr-5 ">
+
+                    {{ knp_pagination_render(comercios) }}
+
+                </div>
 
             </div>
+
         </div>
     </section>
 

@@ -41,6 +41,51 @@ class WebTexto extends BaseClass
      */
     private $textoParaComercios;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $concejos;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $acercaDe;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $instagram;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $twitter;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $youtube;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $contactoDireccion;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $contactoTelefono;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $contactoWhatsapp;
+
 
     public function getId(): ?int
     {
@@ -103,6 +148,114 @@ class WebTexto extends BaseClass
     public function setTextoParaComercios(?string $textoParaComercios): self
     {
         $this->textoParaComercios = $textoParaComercios;
+
+        return $this;
+    }
+
+    public function getConcejos(): ?string
+    {
+        return $this->concejos;
+    }
+
+    public function setConcejos(?string $concejos): self
+    {
+        $this->concejos = $concejos;
+
+        return $this;
+    }
+
+    public function getAcercaDe(): ?string
+    {
+        return $this->acercaDe;
+    }
+
+    public function setAcercaDe(?string $acercaDe): self
+    {
+        $this->acercaDe = $acercaDe;
+
+        return $this;
+    }
+
+    public function getInstagram(): ?string
+    {
+        return $this->instagram;
+    }
+
+    public function setInstagram(?string $instagram): self
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    public function getFacebook(): ?string
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(?string $facebook): self
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    public function getTwitter(): ?string
+    {
+        return $this->twitter;
+    }
+
+    public function setTwitter(?string $twitter): self
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    public function getYoutube(): ?string
+    {
+        return $this->youtube;
+    }
+
+    public function setYoutube(?string $youtube): self
+    {
+        $this->youtube = $youtube;
+
+        return $this;
+    }
+
+    public function getContactoDireccion(): ?string
+    {
+        return $this->contactoDireccion;
+    }
+
+    public function setContactoDireccion(?string $contactoDireccion): self
+    {
+        $this->contactoDireccion = $contactoDireccion;
+
+        return $this;
+    }
+
+    public function getContactoTelefono(): ?string
+    {
+        return $this->contactoTelefono;
+    }
+
+    public function setContactoTelefono(?string $contactoTelefono): self
+    {
+        $this->contactoTelefono = $contactoTelefono;
+
+        return $this;
+    }
+
+    public function getContactoWhatsapp(): ?string
+    {
+        return $this->contactoWhatsapp;
+    }
+
+    public function setContactoWhatsapp(?string $contactoWhatsapp): self
+    {
+        $this->contactoWhatsapp = $contactoWhatsapp;
 
         return $this;
     }

@@ -1,0 +1,56 @@
+{% extends '/Web/layout.html.twig' %}
+
+{% block meta_description %}{{ novedad.cuerpo | excerpt }}{% endblock %}
+{% block title %}{{ novedad.titulo }} - {% endblock %}
+
+{% if novedad.nombreImagenDestacada %}
+    {% set image = absolute_url(asset('uploads/novedad_imagenes_destacadas/' ~ novedad.nombreImagenDestacada)) %}
+{% else %}
+    {% set image = absolute_url(asset('build/images/blackfriday2019.jpg')) %}
+{% endif %}
+
+{% block meta_social %}
+    {% set title = novedad.titulo %}
+    {% set description = novedad.cuerpo | excerpt %}
+    {% set url = app.request.uri %}
+
+
+    {# facebook #}
+    <meta property="og:url"
+          content="{{ url }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:image" content="{{ image }}"/>
+
+    {# twitter #}
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@blackfridayposadas"/>
+    <meta name="twitter:creator" content="@blackfridayposadas"/>
+    <meta property="og:url" content="{{ url }}"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description"
+          content="{{ description }}"/>
+    <meta property="og:image"
+          content="{{ image }}"/>
+
+{% endblock meta_social %}
+
+{% block content %}
+    <section class="page">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 p-5">
+                    <h2 class="display-4">{{ novedad.titulo }}</h2>
+                    <img class="img-fluid"
+                         src="{{ image }}"
+                         alt="{{ novedad.titulo }}">
+
+                    <div class="entry mt-3">
+                        {{ novedad.cuerpo |raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -5,8 +5,22 @@ easy_admin:
             class: App\Entity\WebTexto
             form:
                 fields:
+                  - { type: 'group', columns: 12, label: 'Banner' }
                   - { property: 'tituloHeader' }
                   - { property: 'subTituloHeader' }
-                  - { property: 'linkFormularioInscripcionComercios' }
+                  - { type: 'group', columns: 12, label: 'Inicio' }
                   - { property: 'mostrarTips' }
-                  - { property: 'textoParaComercios', type: 'fos_ckeditor' }
+                  - { property: 'acercaDe', type: 'fos_ckeditor' }
+                  - { property: 'concejos', type: 'fos_ckeditor' }
+                  - { type: 'group', columns: 12, label: 'Comercios' }
+                  - { property: 'linkFormularioInscripcionComercios' }
+                  - { property: 'textoParaComercios', type: 'fos_ckeditor', type_options: { config: { filebrowserUploadRoute: 'upload_file_entry'} } }
+                  - { type: 'group', columns: 6, label: 'Contacto' }
+                  - { property: 'contactoDireccion' }
+                  - { property: 'contactoTelefono' }
+                  - { property: 'contactoWhatsapp' }
+                  - { type: 'group', columns: 6, label: 'Social' }
+                  - { property: 'instagram' }
+                  - { property: 'facebook' }
+                  - { property: 'twitter' }
+                  - { property: 'youtube' }

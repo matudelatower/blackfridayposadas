@@ -3,6 +3,10 @@
 !/public/uploads/logos_comercios/.gitkeep
 /public/uploads/imagenes_galerias/*
 !/public/uploads/imagenes_galerias/.gitkeep
+/public/uploads/novedad_imagenes_destacadas/*
+!/public/uploads/novedad_imagenes_destacadas/.gitkeep
+/public/uploads/imagenes_entradas/*
+!/public/uploads/imagenes_entradas/.gitkeep
 
 # -- Editores -----------------------------------------
 # vim

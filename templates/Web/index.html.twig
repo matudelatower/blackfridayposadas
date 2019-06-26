@@ -2,13 +2,35 @@
 
 {% block stylesheets %}
     <style>
-        .masthead-content img{
+        .masthead-content img {
             width: 35rem;
-            padding-top: 3rem;
+            padding-top: 6rem;
         }
-        header.masthead{
+
+        header.masthead {
             padding-top: unset;
             padding-bottom: 3rem;
+            background: url('{{ asset('build/images/fondo-ladrillo.png') }}');
+        }
+
+        .btn-xl {
+            font-size: 1.5rem;
+            min-width: 260px;
+            padding: 1rem 1.5rem;
+        }
+
+        #consejos {
+            /*background-color: #FAE621;*/
+            /*color: #373435;*/
+            background-color: #373435;
+            color: #FAE621;
+        }
+
+        #galerias {
+            /*background-color: #FAE621;*/
+            background-color: #ED3237;
+            /*color: #373435;*/
+            color: #FAE621;
         }
     </style>
 {% endblock stylesheets %}
@@ -17,40 +39,96 @@
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container">
-{#                <h1 class="masthead-heading mb-0">#}
-{#                    {% if web_texto and web_texto.tituloHeader %}#}
-{#                        {{ web_texto.tituloHeader }}#}
-{#                    {% else %}#}
-{#                        Black Friday Posadas#}
-{#                    {% endif %}#}
-{#                </h1>#}
-{#                <h2 class="masthead-subheading mb-0">#}
-{#                    {% if web_texto and web_texto.subTituloHeader %}#}
-{#                        {{ web_texto.subTituloHeader }}#}
-{#                    {% else %}#}
-{#                        Del 1 al 4 de Agosto#}
-{#                    {% endif %}#}
-{#                </h2>#}
+                {#                <h1 class="masthead-heading mb-0">#}
+                {#                    {% if web_texto and web_texto.tituloHeader %}#}
+                {#                        {{ web_texto.tituloHeader }}#}
+                {#                    {% else %}#}
+                {#                        Black Friday Posadas#}
+                {#                    {% endif %}#}
+                {#                </h1>#}
+                {#                <h2 class="masthead-subheading mb-0">#}
+                {#                    {% if web_texto and web_texto.subTituloHeader %}#}
+                {#                        {{ web_texto.subTituloHeader }}#}
+                {#                    {% else %}#}
+                {#                        Del 1 al 4 de Agosto#}
+                {#                    {% endif %}#}
+                {#                </h2>#}
                 <div class="row">
                     <div class="col-md-12">
-                        <img class="img-fluid" src="{{ asset('build/images/blackfriday2019.jpg') }}">
+                        <img class="img-fluid" src="{{ asset('build/images/isologo-letras-2019.png') }}">
                     </div>
                 </div>
-                <a href="{{ path('rubros') }}" class="btn btn-primary btn-xl rounded-pill mt-5">Consumidores</a>
-                <a href="{{ path('para_comercios') }}" class="btn btn-secondary btn-xl rounded-pill mt-5">Comercios</a>
+                <a href="{{ path('para_comercios') }}" class="btn btn-secondary btn-xl  mt-5">Comercios</a>
+                <a href="{{ path('comercios') }}" class="btn btn-primary btn-xl  mt-5">Consumidores</a>
             </div>
         </div>
-        <div class="bg-circle-1 bg-circle"></div>
-        <div class="bg-circle-2 bg-circle"></div>
-        <div class="bg-circle-3 bg-circle"></div>
-        <div class="bg-circle-4 bg-circle"></div>
+        {#        <div class="bg-circle-1 bg-circle"></div>#}
+        {#        <div class="bg-circle-2 bg-circle"></div>#}
+        {#        <div class="bg-circle-3 bg-circle"></div>#}
+        {#        <div class="bg-circle-4 bg-circle"></div>#}
     </header>
-    {% for galeria in galerias %}
-        <section>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="offset-md-3 col-md-6 p-5">
-                        <h3>{{ galeria.titulo }}</h3>
+
+    <section id="acerca-de">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 pt-5 pb-5">
+                    <h2 class="text-center">Acerca del BlackFriday</h2>
+                    {{ web_texto.acercaDe | raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="consejos">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 pt-5 pb-5">
+                    <h2 class="text-center">
+                        Agunos consejos para que tengas en cuenta
+                    </h2>
+                    {{ web_texto.concejos | raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="novedades">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 pt-5 pb-5">
+                    <h2 class="text-center">
+                        Novedades
+                    </h2>
+                    <div class="card-deck">
+                        {% for novedad in novedades %}
+                            <div class="card">
+                                <img class="card-img-top"
+                                     src="{{ asset('uploads/novedad_imagenes_destacadas/' ~ novedad.nombreImagenDestacada) }}"
+                                     alt="{{ novedad.titulo }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ novedad.titulo }}</h5>
+                                    <p class="card-text">{{ novedad.cuerpo | excerpt }}</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">{{ novedad.fechaCreacion | date('d/m/Y') }}</small>
+                                    </p>
+                                    <a href="{{ path('novedad', {'id': novedad.id}) }}" class="btn btn-primary">Leer
+                                        más</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerias">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="offset-md-3 col-md-6 p-5">
+                    <h2 class="text-center">Galerías</h2>
+                    {% for galeria in galerias if galeria.webGaleriaImagens.count > 0 %}
+                        <h4>{{ galeria.titulo }}</h4>
                         <div id="carouselExampleIndicators{{ galeria.id }}" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 {% for imagen in galeria.webGaleriaImagens %}
@@ -84,11 +162,12 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                    </div>
+
+                    {% endfor %}
                 </div>
             </div>
-        </section>
-    {% endfor %}
+        </div>
+    </section>
     {#    <section>#}
     {#        <div class="container">#}
     {#            <div class="row align-items-center">#}

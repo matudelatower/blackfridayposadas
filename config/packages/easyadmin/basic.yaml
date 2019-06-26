@@ -10,11 +10,12 @@ easy_admin:
   #            - { name: 'delete', icon: 'trash', label: '' }
 
   design:
-    brand_color: '#D41B20'
+    brand_color: '#ED3237'
     #        form_theme: ['horizontal']
     menu:
       - { label: 'Ver web', route: 'web', icon: "eye" }
       - { label: 'Texto de la Web', entity: WebTexto, icon: "globe" }
+      - { label: 'Novedades', entity: Novedad }
       - { label: 'Galerías', entity: WebGaleria }
       - { label: 'Rubros', entity: Rubro }
       - { label: 'Comercios', entity: Comercio }

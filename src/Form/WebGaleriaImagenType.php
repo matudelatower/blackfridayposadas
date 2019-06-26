@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\WebGaleriaImagen;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,6 +13,9 @@ class WebGaleriaImagenType extends AbstractType {
 	public function buildForm( FormBuilderInterface $builder, array $options ) {
 		$builder
 			->add( 'titulo' )
+			->add('test', CKEditorType::class, [
+				'filebrowsers'
+			])
 			->add( 'archivoLogo',
 				VichImageType::class,
 				[

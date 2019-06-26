@@ -7,6 +7,9 @@ parameters:
     locale: 'es'
     app.path.logos_comercios: /uploads/logos_comercios
     app.path.imagenes_galerias: /uploads/imagenes_galerias
+    app.path.novedad_imagenes_destacadas: /uploads/novedad_imagenes_destacadas
+    app.path.imagenes_entradas: /uploads/imagenes_entradas
+    app.path.imagenes_entradas_url: '%kernel.project_dir%/public/uploads/imagenes_entradas'
 
 services:
     # default configuration for services in *this* file
@@ -28,3 +31,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    form_extension.button_icon:
+        class: App\Form\Extension\ButtonIconTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\ButtonType }

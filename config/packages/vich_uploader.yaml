@@ -10,3 +10,11 @@ vich_uploader:
             uri_prefix: '%app.path.imagenes_galerias%'
             upload_destination: '%kernel.project_dir%/public%app.path.imagenes_galerias%'
             namer: Vich\UploaderBundle\Naming\OrignameNamer
+        novedad_imagenes_destacadas:
+            uri_prefix: '%app.path.novedad_imagenes_destacadas%'
+            upload_destination: '%kernel.project_dir%/public%app.path.novedad_imagenes_destacadas%'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+        imagenes_entradas:
+            uri_prefix: '%app.path.imagenes_entradas%'
+            upload_destination: '%kernel.project_dir%/public%app.path.imagenes_entradas%'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer

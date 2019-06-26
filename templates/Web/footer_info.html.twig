@@ -1,0 +1,45 @@
+<hr>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="footer-info">
+                <a target="_blank" href="http://www.cciposadas.com.ar/">Cámara de Comercio e Industria de Posadas</a>
+                <br>
+                <strong>Tel.:</strong> {{ footerInfo.contactoTelefono }} <br>
+                <strong>E-mail:</strong>
+                <a href="mailto:administración@cciposadas.com.ar">administración@cciposadas.com.ar</a> <br>
+                <a href="mailto:camaracomercioccip@gmail.com">camaracomercioccip@gmail.com</a> <br>
+                <a href="mailto:blackfridayposadas@gmail.com">blackfridayposadas@gmail.com</a>
+                <br>
+                Tucumán N° 1807 esq. Félix de Azara - (3300) Posadas - Misiones - Argentina
+            </div>
+
+        </div>
+        <div class="col-md-6 text-right">
+            {% if footerInfo.instagram %}
+
+                <a target="_blank" href="{{ footerInfo.instagram }}"><i
+                            class="fa-3x social fab fa-instagram"></i></a>
+
+            {% endif %}
+
+            {% if footerInfo.facebook %}
+
+                <a target="_blank" href="{{ footerInfo.facebook }}"><i class="fa-3x social fab fa-facebook"></i></a>
+
+            {% endif %}
+
+            {% if footerInfo.twitter %}
+
+                <a target="_blank" href="{{ footerInfo.twitter }}"><i class="fa-3x social fab fa-twitter"></i></a>
+
+            {% endif %}
+
+            {% if footerInfo.youtube %}
+
+                <a target="_blank" href="{{ footerInfo.youtube }}"><i class="fa-3x social fab fa-youtube"></i></a>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
