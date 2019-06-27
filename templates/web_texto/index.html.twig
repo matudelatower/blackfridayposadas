@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WebTexto index{% endblock %}
+
+{% block body %}
+    <h1>WebTexto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TituloHeader</th>
+                <th>SubTituloHeader</th>
+                <th>LinkFormularioInscripcionComercios</th>
+                <th>MostrarTips</th>
+                <th>TextoParaComercios</th>
+                <th>Concejos</th>
+                <th>AcercaDe</th>
+                <th>Instagram</th>
+                <th>Facebook</th>
+                <th>Twitter</th>
+                <th>Youtube</th>
+                <th>ContactoDireccion</th>
+                <th>ContactoTelefono</th>
+                <th>ContactoWhatsapp</th>
+                <th>Activo</th>
+                <th>FechaCreacion</th>
+                <th>FechaActualizacion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for web_texto in web_textos %}
+            <tr>
+                <td>{{ web_texto.id }}</td>
+                <td>{{ web_texto.tituloHeader }}</td>
+                <td>{{ web_texto.subTituloHeader }}</td>
+                <td>{{ web_texto.linkFormularioInscripcionComercios }}</td>
+                <td>{{ web_texto.mostrarTips ? 'Yes' : 'No' }}</td>
+                <td>{{ web_texto.textoParaComercios }}</td>
+                <td>{{ web_texto.concejos }}</td>
+                <td>{{ web_texto.acercaDe }}</td>
+                <td>{{ web_texto.instagram }}</td>
+                <td>{{ web_texto.facebook }}</td>
+                <td>{{ web_texto.twitter }}</td>
+                <td>{{ web_texto.youtube }}</td>
+                <td>{{ web_texto.contactoDireccion }}</td>
+                <td>{{ web_texto.contactoTelefono }}</td>
+                <td>{{ web_texto.contactoWhatsapp }}</td>
+                <td>{{ web_texto.activo ? 'Yes' : 'No' }}</td>
+                <td>{{ web_texto.fechaCreacion ? web_texto.fechaCreacion|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ web_texto.fechaActualizacion ? web_texto.fechaActualizacion|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('web_texto_show', {'id': web_texto.id}) }}">show</a>
+                    <a href="{{ path('web_texto_edit', {'id': web_texto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('web_texto_new') }}">Create new</a>
+{% endblock %}

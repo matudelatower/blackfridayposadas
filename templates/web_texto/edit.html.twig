@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Web{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            {{ include('web_texto/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

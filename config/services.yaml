@@ -32,7 +32,24 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    #knp_menu
+    app.menu_builder:
+        class: App\Menu\Builder
+        tags:
+            - { name: knp_menu.menu_builder, method: mainMenu, alias: main }
+
+    App\Menu\Builder:
+        tags:
+            - { name: knp_menu.menu_builder, method: mainMenu, alias: main }
+
     form_extension.button_icon:
         class: App\Form\Extension\ButtonIconTypeExtension
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\ButtonType }
+
+    form.type.bootstrapcollection:
+        class: App\Form\BootstrapCollectionType
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: form.type, alias: bootstrapcollection }

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WebGaleria{% endblock %}
+
+{% block body %}
+    <h1>WebGaleria</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ web_galerium.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ web_galerium.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ web_galerium.activo ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>FechaCreacion</th>
+                <td>{{ web_galerium.fechaCreacion ? web_galerium.fechaCreacion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FechaActualizacion</th>
+                <td>{{ web_galerium.fechaActualizacion ? web_galerium.fechaActualizacion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('web_galeria_index') }}">back to list</a>
+
+    <a href="{{ path('web_galeria_edit', {'id': web_galerium.id}) }}">edit</a>
+
+
+{% endblock %}

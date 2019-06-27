@@ -16,14 +16,15 @@ class AdminController extends EasyAdminController {
 		$this->userManager = $userManager;
 	}
 
-//	public function listUsuarioAction()
-//	{
-//		if (!$this->isGranted("ROLE_ADMIN")) {
+	public function listUsuarioAction()
+	{
+		if (!$this->isGranted("ROLE_ADMIN")) {
 //			return $this->redirectToRoute('administrador');
-////			return $this->redirectToRoute('administrador', ['entity' => 'Usuario', 'action' => 'edit', 'id' => $this->getUser()->getId()]);
-//		}
-//		return $this->listAction();
-//	}
+//			return $this->redirectToRoute('easyadmin', ['entity' => 'Usuario', 'action' => 'edit', 'id' => $this->getUser()->getId()]);
+			return $this->redirectToRoute('fos_user_change_password');
+		}
+		return $this->listAction();
+	}
 
 	public function createNewUsuarioEntity() {
 		return $this->userManager->createUser();

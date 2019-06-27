@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WebTexto{% endblock %}
+
+{% block body %}
+    <h1>WebTexto</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ web_texto.id }}</td>
+            </tr>
+            <tr>
+                <th>TituloHeader</th>
+                <td>{{ web_texto.tituloHeader }}</td>
+            </tr>
+            <tr>
+                <th>SubTituloHeader</th>
+                <td>{{ web_texto.subTituloHeader }}</td>
+            </tr>
+            <tr>
+                <th>LinkFormularioInscripcionComercios</th>
+                <td>{{ web_texto.linkFormularioInscripcionComercios }}</td>
+            </tr>
+            <tr>
+                <th>MostrarTips</th>
+                <td>{{ web_texto.mostrarTips ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>TextoParaComercios</th>
+                <td>{{ web_texto.textoParaComercios }}</td>
+            </tr>
+            <tr>
+                <th>Concejos</th>
+                <td>{{ web_texto.concejos }}</td>
+            </tr>
+            <tr>
+                <th>AcercaDe</th>
+                <td>{{ web_texto.acercaDe }}</td>
+            </tr>
+            <tr>
+                <th>Instagram</th>
+                <td>{{ web_texto.instagram }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ web_texto.facebook }}</td>
+            </tr>
+            <tr>
+                <th>Twitter</th>
+                <td>{{ web_texto.twitter }}</td>
+            </tr>
+            <tr>
+                <th>Youtube</th>
+                <td>{{ web_texto.youtube }}</td>
+            </tr>
+            <tr>
+                <th>ContactoDireccion</th>
+                <td>{{ web_texto.contactoDireccion }}</td>
+            </tr>
+            <tr>
+                <th>ContactoTelefono</th>
+                <td>{{ web_texto.contactoTelefono }}</td>
+            </tr>
+            <tr>
+                <th>ContactoWhatsapp</th>
+                <td>{{ web_texto.contactoWhatsapp }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ web_texto.activo ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>FechaCreacion</th>
+                <td>{{ web_texto.fechaCreacion ? web_texto.fechaCreacion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FechaActualizacion</th>
+                <td>{{ web_texto.fechaActualizacion ? web_texto.fechaActualizacion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('web_texto_index') }}">back to list</a>
+
+    <a href="{{ path('web_texto_edit', {'id': web_texto.id}) }}">edit</a>
+
+    {{ include('web_texto/_delete_form.html.twig') }}
+{% endblock %}

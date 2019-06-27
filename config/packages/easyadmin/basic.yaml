@@ -14,6 +14,7 @@ easy_admin:
     #        form_theme: ['horizontal']
     menu:
       - { label: 'Ver web', route: 'web', icon: "eye" }
+      - { label: 'Volver al panel', route: 'administrador_index', icon: "arrow-left" }
       - { label: 'Texto de la Web', entity: WebTexto, icon: "globe" }
       - { label: 'Novedades', entity: Novedad }
       - { label: 'Galerías', entity: WebGaleria }

@@ -19,6 +19,9 @@ easy_admin:
                   - { property: 'roles', type: 'choice', type_options: { multiple: true, expanded: false, choices:
                     { 'ROLE_USER': 'ROLE_USER',
                       'ROLE_ADMIN': 'ROLE_ADMIN',
+                      'ROLE_ADMINISTRACION': 'ROLE_ADMINISTRACION',
+                      'ROLE_PRENSA': 'ROLE_PRENSA',
+                      'ROLE_EVENTO': 'ROLE_EVENTO'
                     }
                     }
                     }

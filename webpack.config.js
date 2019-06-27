@@ -27,10 +27,13 @@ Encore
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/web', './assets/js/web.js')
     .addEntry('js/login', './assets/js/login.js')
+    .addEntry('js/adminlte', './assets/js/adminlte.js')
+    .addEntry('js/functions', './assets/js/functions.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
     .addStyleEntry('css/web', './assets/css/web.scss')
     .addStyleEntry('css/login', './assets/css/login.scss')
+    .addStyleEntry('css/adminlte', './assets/css/adminlte.scss')
 
     .copyFiles([
         {from: './node_modules/ckeditor/', to: 'ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},

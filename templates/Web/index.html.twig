@@ -11,6 +11,7 @@
             padding-top: unset;
             padding-bottom: 3rem;
             background: url('{{ asset('build/images/fondo-ladrillo.png') }}');
+            background-size: cover;
         }
 
         .btn-xl {
@@ -99,8 +100,10 @@
                     <h2 class="text-center">
                         Novedades
                     </h2>
-                    <div class="card-deck">
+                    {% set cols = 3 %}
+                    <div class="card-columns">
                         {% for novedad in novedades %}
+
                             <div class="card">
                                 <img class="card-img-top"
                                      src="{{ asset('uploads/novedad_imagenes_destacadas/' ~ novedad.nombreImagenDestacada) }}"
@@ -115,6 +118,7 @@
                                         más</a>
                                 </div>
                             </div>
+
                         {% endfor %}
                     </div>
                 </div>
