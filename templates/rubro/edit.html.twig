@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Rubro{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ include('rubro/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+    </div>
+
+    <a class="btn btn-secondary" href="{{ path('rubro_index') }}">Volver</a>
+
+{% endblock %}

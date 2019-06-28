@@ -1,0 +1,101 @@
+{% extends '/Web/layout.html.twig' %}
+
+{% set title = 'Novedades' %}
+{% set description = 'Sección de novedades' %}
+
+{% block meta_description %}{{ description }}{% endblock %}
+{% block title %}{{ title }} - {% endblock %}
+
+{% set image = absolute_url(asset('build/images/blackfriday2019.jpg')) %}
+
+{% block meta_social %}
+
+    {% set url = app.request.uri %}
+
+    {# facebook #}
+    <meta property="og:url"
+          content="{{ url }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:image" content="{{ image }}"/>
+
+    {# twitter #}
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@blackfridayposadas"/>
+    <meta name="twitter:creator" content="@blackfridayposadas"/>
+    <meta property="og:url" content="{{ url }}"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description"
+          content="{{ description }}"/>
+    <meta property="og:image"
+          content="{{ image }}"/>
+
+{% endblock meta_social %}
+
+{% block stylesheets %}
+    <style>
+        .imgmain {
+            width: 200px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            /*max-height: 250px;*/
+        }
+
+        img.absolute {
+            left: 50%;
+            margin-left: -200px;
+            position: absolute;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+    <section class="page">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-md-12 p-5">
+                    <h2 class="display-4">{{ title }}</h2>
+                    <div class="row mb-2">
+                        {% for novedad in novedades %}
+                            <div class="col-md-6">
+                                <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                    <div class="col p-4 d-flex flex-column position-static">
+                                        {#  <strong class="d-inline-block mb-2 text-primary">World</strong>#}
+                                        <h3 class="mb-0">{{ novedad.titulo }}</h3>
+                                        <div class="mb-1 text-muted">{{ novedad.fechaCreacion | date('d/m/Y') }}</div>
+                                        <p class="card-text mb-auto">
+                                            {{ novedad.cuerpo | excerpt('20') }}
+                                        </p>
+                                        <a href="{{ path('novedad', {'id': novedad.id }) }}" class="stretched-link">Continuar
+                                            leyendo</a>
+                                    </div>
+                                    <div class="col-auto d-none d-lg-block">
+                                        <div class="imgmain">
+                                            {% if novedad.nombreImagenDestacada %}
+                                                <img class="bd-placeholder-img absolute"
+                                                     src="{{ asset('uploads/novedad_imagenes_destacadas/' ~ novedad.nombreImagenDestacada) }}">
+                                            {% else %}
+                                                <img class="bd-placeholder-img absolute"
+                                                     src="{{ asset('build/images/blackfriday2019.jpg') }}">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ knp_pagination_render(novedades) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

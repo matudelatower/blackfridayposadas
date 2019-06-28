@@ -9,7 +9,7 @@ easy_admin:
                   - { property: 'enabled' }
                   - { property: 'lastLogin' }
             form:
-                form_options: { validation_groups: [false] }
+#                form_options: { validation_groups: [false] }
                 fields:
                   - username
                   - email

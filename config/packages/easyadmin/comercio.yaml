@@ -5,7 +5,7 @@ easy_admin:
             list:
                 fields: ['nombre', 'direccion', { property: 'nombreLogo', type: 'image', base_path: '%app.path.logos_comercios%' }, 'activo']
             form:
-                form_options: { validation_groups: [false] }
+#                form_options: { validation_groups: [false] }
                 fields:
                   - { property: 'nombre' }
                   - { property: 'direccion' }

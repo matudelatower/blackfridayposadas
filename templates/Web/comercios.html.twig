@@ -37,6 +37,9 @@
             height: 13vw;
             object-fit: cover;
         }
+        .text-amarillo{
+            color: #FAE621 !important;
+        }
     </style>
 {% endblock stylesheets %}
 
@@ -76,6 +79,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
+                                            <strong class="d-inline-block mb-2 text-amarillo">{{ comercio.rubro }}</strong>
                                             <h5 class="card-title">{{ comercio }}</h5>
                                             <p class="card-text">{{ comercio.observacion | raw }}</p>
                                             <p class="card-text">

@@ -271,5 +271,31 @@ class DefaultController extends AbstractController {
 		return new JsonResponse( $response );
 	}
 
+	/**
+	 * @Route("/novedades", name="novedades")
+	 */
+	public function novedades( Request $request, PaginatorInterface $paginator ) {
+
+		$novedades = $this->getDoctrine()->getRepository( Novedad::class )->findBy(
+			[
+				'activo' => true
+			]
+		);
+
+		$novedades = $paginator->paginate(
+			$novedades,
+			$request->query->get( 'page', 1 )/* page number */,
+			6/* limit per page */
+		);
+
+		$novedades->setCustomParameters( [ 'align' => 'center' ] );
+
+
+		return $this->render( 'Web/novedades.html.twig',
+			[
+				'novedades' => $novedades
+			] );
+	}
+
 
 }

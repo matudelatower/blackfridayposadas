@@ -82,39 +82,35 @@ class Builder {
 
 			if ( $this->authorizationChecker->isGranted( 'ROLE_ADMINISTRACION' ) ) {
 
-				$menu[ $keyAdministracion ]
-					->addChild(
-						'Web',
-						array(
-							'route' => 'web_texto_index',
-						)
-					)
-					->setAttribute( 'class', 'nav-item' )
-					->setLinkAttribute( 'class', 'nav-link' );
-			}
-
-			if ( $this->authorizationChecker->isGranted( 'ROLE_PRENSA' ) ) {
-				$menu[ $keyAdministracion ]
-					->addChild(
-						'Novedades',
-						array(
-							'route' => 'novedad_index',
-						)
-					)
-					->setAttribute( 'class', 'nav-item' )
-					->setLinkAttribute( 'class', 'nav-link' );
+//				$menu[ $keyAdministracion ]
+//					->addChild(
+//						'Web',
+//						array(
+//							'route' => 'web_texto_index',
+//						)
+//					)
+//					->setAttribute( 'class', 'nav-item' )
+//					->setLinkAttribute( 'class', 'nav-link' );
 
 				$menu[ $keyAdministracion ]
 					->addChild(
-						'Galerías',
+						'Comercios',
 						array(
-							'route' => 'web_galeria_index',
+							'route' => 'comercio_index',
 						)
 					)
 					->setAttribute( 'class', 'nav-item' )
 					->setLinkAttribute( 'class', 'nav-link' );
 
-
+				$menu[ $keyAdministracion ]
+					->addChild(
+						'Rubros',
+						array(
+							'route' => 'rubro_index',
+						)
+					)
+					->setAttribute( 'class', 'nav-item' )
+					->setLinkAttribute( 'class', 'nav-link' );
 			}
 
 			// usuarios

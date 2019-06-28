@@ -48,10 +48,10 @@ class ComercioRepository extends ServiceEntityRepository {
 
 	public function buscarComercios( $filters ) {
 		$qb = $this->createQueryBuilder( 'c' );
+		$qb->join( 'c.rubro', 'r' );
 
 		if ( isset( $filters['rubro'] ) ) {
-			$qb->join( 'c.rubro', 'r' )
-			   ->andWhere( 'r.id = :rubroId' )
+			$qb->andWhere( 'r.id = :rubroId' )
 			   ->setParameter( 'rubroId', $filters['rubro'] );
 		}
 
@@ -67,7 +67,8 @@ class ComercioRepository extends ServiceEntityRepository {
 				$qb->expr()->orX(
 					$qb->expr()->like( 'UPPER(c.direccion)', 'UPPER(:criteria)' ),
 					$qb->expr()->like( 'UPPER(c.nombre)', 'UPPER(:criteria)' ),
-					$qb->expr()->like( 'UPPER(c.observacion)', 'UPPER(:criteria)' )
+					$qb->expr()->like( 'UPPER(c.observacion)', 'UPPER(:criteria)' ),
+					$qb->expr()->like( 'UPPER(r.nombre)', 'UPPER(:criteria)' )
 				)
 			)
 			   ->setParameter( 'criteria', '%' . $filters['s'] . '%' );

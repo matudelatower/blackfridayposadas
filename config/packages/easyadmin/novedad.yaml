@@ -3,7 +3,7 @@ easy_admin:
         Novedad:
             class: App\Entity\Novedad
             form:
-                form_options: { validation_groups: [false] }
+#                form_options: { validation_groups: [false] }
                 fields:
                   - { property: 'titulo' }
                   - { property: 'cuerpo', type: 'fos_ckeditor' }
