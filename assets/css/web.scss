@@ -3,3 +3,6 @@ $brand-primary: $primary;
 $secondary: #000;
 @import "~bootstrap/scss/bootstrap";
 @import "~startbootstrap-one-page-wonder/scss/one-page-wonder";
+
+@import "~select2/dist/css/select2.min.css";
+@import "~select2-bootstrap-theme/dist/select2-bootstrap.min.css";

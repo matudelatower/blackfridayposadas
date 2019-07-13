@@ -21,6 +21,7 @@ class WebTextoType extends AbstractType {
 					'config' => [ 'filebrowserUploadRoute' => 'upload_file_entry' ]
 
 				] )
+			->add( 'tituloConsejos' )
 			->add( 'concejos', CKEditorType::class )
 			->add( 'acercaDe', CKEditorType::class )
 			->add( 'instagram' )

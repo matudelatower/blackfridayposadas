@@ -85,7 +85,7 @@
             <div class="row align-items-center">
                 <div class="col-md-12 pt-5 pb-5">
                     <h2 class="text-center">
-                        Agunos consejos para que tengas en cuenta
+                        {{ web_texto.tituloConsejos | default('Algunos consejos para que tengas en cuenta') }}
                     </h2>
                     {{ web_texto.concejos | raw }}
                 </div>
@@ -110,7 +110,9 @@
                                      alt="{{ novedad.titulo }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ novedad.titulo }}</h5>
-                                    <p class="card-text">{{ novedad.cuerpo | excerpt }}</p>
+
+                                    <p class="card-text">{{ novedad.cuerpo| striptags | excerpt | raw }}</p>
+
                                     <p class="card-text">
                                         <small class="text-muted">{{ novedad.fechaCreacion | date('d/m/Y') }}</small>
                                     </p>

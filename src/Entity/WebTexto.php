@@ -86,6 +86,11 @@ class WebTexto extends BaseClass
      */
     private $contactoWhatsapp;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $tituloConsejos;
+
 
     public function getId(): ?int
     {
@@ -256,6 +261,18 @@ class WebTexto extends BaseClass
     public function setContactoWhatsapp(?string $contactoWhatsapp): self
     {
         $this->contactoWhatsapp = $contactoWhatsapp;
+
+        return $this;
+    }
+
+    public function getTituloConsejos(): ?string
+    {
+        return $this->tituloConsejos;
+    }
+
+    public function setTituloConsejos(?string $tituloConsejos): self
+    {
+        $this->tituloConsejos = $tituloConsejos;
 
         return $this;
     }

@@ -68,7 +68,7 @@
                                         <h3 class="mb-0">{{ novedad.titulo }}</h3>
                                         <div class="mb-1 text-muted">{{ novedad.fechaCreacion | date('d/m/Y') }}</div>
                                         <p class="card-text mb-auto">
-                                            {{ novedad.cuerpo | excerpt('20') }}
+                                            {{ novedad.cuerpo | striptags | excerpt('20') | raw }}
                                         </p>
                                         <a href="{{ path('novedad', {'id': novedad.id }) }}" class="stretched-link">Continuar
                                             leyendo</a>

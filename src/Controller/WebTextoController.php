@@ -81,7 +81,7 @@ class WebTextoController extends AbstractController {
 				'Actualizado correctamente'
 			);
 
-			return $this->redirectToRoute( 'web_galeria_edit',
+			return $this->redirectToRoute( 'web_texto_edit',
 				[
 					'id' => $webTexto->getId(),
 				] );

@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Rubro;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,7 +16,19 @@ class BuscarComerciosType extends AbstractType {
 			->add( 's',
 				TextType::class,
 				[
-					'attr' => [ 'placeholder' => 'Buscar...' ]
+//					'attr' => [ 'placeholder' => 'Buscar...' ],
+					'label' => 'Nombre de comercio'
+				] )
+			->add( 'oRubro',
+				EntityType::class,
+				[
+					'class'       => Rubro::class,
+					'attr'        => [
+						'class' => 'select2'
+					],
+					'placeholder' => 'Seleccionar rubro...',
+					'label'       => 'Rubro'
+
 				] )
 			->add( 'btnBuscar',
 				SubmitType::class,

@@ -55,6 +55,11 @@ class ComercioRepository extends ServiceEntityRepository {
 			   ->setParameter( 'rubroId', $filters['rubro'] );
 		}
 
+		if ( isset( $filters['oRubro'] ) ) {
+			$qb->andWhere( 'r = :rubro' )
+			   ->setParameter( 'rubro', $filters['oRubro'] );
+		}
+
 
 		if ( $filters['activo'] ) {
 			$qb

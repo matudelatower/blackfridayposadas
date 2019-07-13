@@ -11,6 +11,7 @@ easy_admin:
                   - { type: 'group', columns: 12, label: 'Inicio' }
                   - { property: 'mostrarTips' }
                   - { property: 'acercaDe', type: 'fos_ckeditor' }
+                  - { property: 'tituloConsejos' }
                   - { property: 'concejos', type: 'fos_ckeditor' }
                   - { type: 'group', columns: 12, label: 'Comercios' }
                   - { property: 'linkFormularioInscripcionComercios' }

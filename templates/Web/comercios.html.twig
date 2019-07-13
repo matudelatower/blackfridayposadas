@@ -37,7 +37,8 @@
             height: 13vw;
             object-fit: cover;
         }
-        .text-amarillo{
+
+        .text-amarillo {
             color: #FAE621 !important;
         }
     </style>
@@ -52,49 +53,87 @@
                 <div class="col-md-12 p-5">
                     <h2 class="display-4">Comercios</h2>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             {{ form_start(form) }}
-                            <div class="input-group mb-3">
-                                {{ form_widget(form.s) }}
-                                <div class="input-group-append">
-                                    {{ form_widget(form.btnBuscar) }}
+                            {#                            <div class="input-group mb-3">#}
+                            {#                                {{ form_widget(form.s) }}#}
+                            {#                                <div class="input-group-append">#}
+                            {#                                    {{ form_widget(form.btnBuscar) }}#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form_row(form.s) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.oRubro) }}
                                 </div>
                             </div>
-                            {{ form_end(form) }}
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-columns">
                         {% for comercio in comercios %}
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        {% if comercio.nombreLogo %}
-                                            <img src="{{ asset('uploads/logos_comercios/' ~ comercio.nombreLogo) }}"
-                                                 class="card-img-custom" alt="logo-comercio">
-                                        {% else %}
-                                            <img src="{{ asset('build/images/default-image-card-comercio.png') }}"
-                                                 class="card-img" alt="default-image-comercio.png">
-                                        {% endif %}
+{#                            <div class="card mb-3">#}
+{#                                <div class="row no-gutters">#}
+{#                                    <div class="col-md-4">#}
+{#                                        {% if comercio.nombreLogo %}#}
+{#                                            <img src="{{ asset('uploads/logos_comercios/' ~ comercio.nombreLogo) }}"#}
+{#                                                 class="card-img-custom" alt="logo-comercio">#}
+{#                                        {% else %}#}
+{#                                            <img src="{{ asset('build/images/default-image-card-comercio.png') }}"#}
+{#                                                 class="card-img" alt="default-image-comercio.png">#}
+{#                                        {% endif %}#}
 
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <strong class="d-inline-block mb-2 text-amarillo">{{ comercio.rubro }}</strong>
-                                            <h5 class="card-title">{{ comercio }}</h5>
-                                            <p class="card-text">{{ comercio.observacion | raw }}</p>
-                                            <p class="card-text">
-                                                <small class="text-muted">
-                                                    <strong>Dirección:</strong>
-                                                    {% if comercio.linkGoogleMaps %}
-                                                        <a href="{{ comercio.linkGoogleMaps }}"
-                                                           target="_blank">{{ comercio.direccion }}</a>
-                                                    {% else %}
-                                                        {{ comercio.direccion }}
-                                                    {% endif %}
-                                                </small>
-                                            </p>
-                                        </div>
-                                    </div>
+{#                                    </div>#}
+{#                                    <div class="col-md-8">#}
+{#                                        <div class="card-body">#}
+{#                                            <strong class="d-inline-block mb-2 text-amarillo">{{ comercio.rubro }}</strong>#}
+{#                                            <h5 class="card-title">{{ comercio }}</h5>#}
+{#                                            <p class="card-text">{{ comercio.observacion | raw }}</p>#}
+{#                                            <p class="card-text">#}
+{#                                                <small class="text-muted">#}
+{#                                                    <strong>Dirección:</strong>#}
+{#                                                    {% if comercio.linkGoogleMaps %}#}
+{#                                                        <a href="{{ comercio.linkGoogleMaps }}"#}
+{#                                                           target="_blank">{{ comercio.direccion }}</a>#}
+{#                                                    {% else %}#}
+{#                                                        {{ comercio.direccion }}#}
+{#                                                    {% endif %}#}
+{#                                                </small>#}
+{#                                            </p>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+
+                            <div class="card" style="width: 18rem;">
+                                {% if comercio.nombreLogo %}
+                                    <img src="{{ asset('uploads/logos_comercios/' ~ comercio.nombreLogo) }}"
+                                         class="card-img-top" alt="logo-comercio">
+                                {% else %}
+                                    <img src="{{ asset('build/images/default-image-comercio.png') }}"
+                                         class="card-img-top" alt="default-image-comercio.png">
+                                {% endif %}
+                                <div class="card-body">
+                                    <strong class="d-inline-block mb-2 text-amarillo">{{ comercio.rubro }}</strong>
+                                    <h5 class="card-title">{{ comercio }}</h5>
+                                    <p class="card-text">{{ comercio.observacion | raw }}</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <strong>Dirección:</strong>
+                                            {% if comercio.linkGoogleMaps %}
+                                                <a href="{{ comercio.linkGoogleMaps }}"
+                                                   target="_blank">{{ comercio.direccion }}</a>
+                                            {% else %}
+                                                {{ comercio.direccion }}
+                                            {% endif %}
+                                        </small>
+                                    </p>
                                 </div>
                             </div>
                         {% endfor %}
@@ -114,3 +153,13 @@
     </section>
 
 {% endblock content %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $( ".select2" ).select2({
+                theme: "bootstrap"
+            });
+        });
+    </script>
+{% endblock javascripts %}
