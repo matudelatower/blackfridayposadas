@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Rubro;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -22,12 +23,16 @@ class BuscarComerciosType extends AbstractType {
 			->add( 'oRubro',
 				EntityType::class,
 				[
-					'class'       => Rubro::class,
-					'attr'        => [
+					'class'         => Rubro::class,
+					'attr'          => [
 						'class' => 'select2'
 					],
-					'placeholder' => 'Seleccionar rubro...',
-					'label'       => 'Rubro'
+					'placeholder'   => 'Seleccionar rubro...',
+					'label'         => 'Rubro',
+					'query_builder' => function ( EntityRepository $er ) {
+						return $er->createQueryBuilder( 'r' )
+						          ->orderBy( 'r.nombre', 'ASC' );
+					},
 
 				] )
 			->add( 'btnBuscar',

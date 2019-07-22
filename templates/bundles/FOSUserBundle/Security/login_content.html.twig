@@ -54,7 +54,7 @@
     </style>
 {% endblock stylesheets %}
 
-<form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+<form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post" autocomplete="off">
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
     {% endif %}
